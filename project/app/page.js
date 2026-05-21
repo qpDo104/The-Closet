@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabaseClient' // Assicurati che il percorso sia giusto
+import { supabase } from '../lib/supabaseClient' // Assicurati che il percorso sia giusto
 
 export default function TestConnection() {
   const [status, setStatus] = useState('Verifica in corso...')
