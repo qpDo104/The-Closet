@@ -8,7 +8,6 @@ export default function TestConnection() {
   useEffect(() => {
     async function checkConnection() {
       try {
-        // Proviamo a leggere dalla tabella 'clothings' (anche se è vuota)
         const { data, error } = await supabase
           .from('clothings')
           .select('*')
@@ -20,8 +19,10 @@ export default function TestConnection() {
 
         setStatus('✅ Connessione a Supabase riuscita!')
       } catch (err) {
-        console.error('Errore Supabase:', err)
-        setStatus('❌ Errore di connessione. Controlla le chiavi nel .env o la tabella.')
+        // Qui forziamo la stampa del vero messaggio di Supabase!
+        const errorMessage = err.message || JSON.stringify(err)
+        console.error('Errore dettagliato:', errorMessage)
+        setStatus('❌ Errore: ' + errorMessage)
       }
     }
 
